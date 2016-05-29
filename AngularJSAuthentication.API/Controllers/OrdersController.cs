@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace AngularJSAuthentication.API.Controllers
 {
@@ -15,10 +16,10 @@ namespace AngularJSAuthentication.API.Controllers
         [Route("")]
         public IHttpActionResult Get()
         {
-            //ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
+            ClaimsPrincipal principal = Request.GetRequestContext().Principal as ClaimsPrincipal;
 
-            //var Name = ClaimsPrincipal.Current.Identity.Name;
-            //var Name1 = User.Identity.Name;
+            var Name = ClaimsPrincipal.Current.Identity.Name;
+            var Id = System.Web.HttpContext.Current.User.Identity.GetUserId();
 
             //var userName = principal.Claims.Where(c => c.Type == "sub").Single().Value;
 
